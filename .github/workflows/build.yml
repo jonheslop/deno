@@ -123,9 +123,9 @@ jobs:
 
       - name: Test debug
         if: matrix.kind == 'test_debug'
-        env:
-          DENO_BUILD_MODE: debug
-        run: cargo test --locked --all-targets
+        run: |
+          echo ::set-env name=DENO_BUILD_MODE::debug
+          cargo test --locked --all-targets
 
       - name: Run Benchmarks
         if: matrix.kind == 'bench'
