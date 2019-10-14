@@ -157,12 +157,13 @@ class TestNetDialPermissions(BaseComplexPermissionTest):
         assert PROMPT_PATTERN not in stderr
         assert PERMISSION_DENIED_PATTERN not in stderr
 
-    def test_allow_deno_land(self):
-        code, _stdout, stderr = self._run_deno(
-            ["--allow-net=deno.land"], [self.test_type, "127.0.0.1:4545"])
-        assert code == 1
-        assert PROMPT_PATTERN not in stderr
-        assert PERMISSION_DENIED_PATTERN in stderr
+    # TODO(ry) Re-enable this flaky test.
+    # def test_allow_deno_land(self):
+    #     code, _stdout, stderr = self._run_deno(
+    #         ["--allow-net=deno.land"], [self.test_type, "127.0.0.1:4545"])
+    #     assert code == 1
+    #     assert PROMPT_PATTERN not in stderr
+    #     assert PERMISSION_DENIED_PATTERN in stderr
 
     def test_allow_localhost_ip_4545_fail(self):
         code, _stdout, stderr = self._run_deno(
